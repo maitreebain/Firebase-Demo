@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     
     private func continueLoginFlow(email: String, password: String){
         if accountState == .existingUser {
-            authSession.signExistingUser(email: email, password: password) { (result) in
+            authSession.signExistingUser(email: email, password: password) { [unowned self] (result) in
                 
                 switch result{
                 case .failure(let error):
@@ -50,15 +50,16 @@ class LoginViewController: UIViewController {
                         self.errorLabel.text = "\(error.localizedDescription)"
                         self.errorLabel.textColor = .systemRed
                     }
-                case .success(let authDataResult):
+                case .success:
                     DispatchQueue.main.async {
-                        self.errorLabel.textColor = .systemGreen
-                        self.errorLabel.text = "Welcome back user with email: \(authDataResult.user.email ?? "")"
+                        //TODO: navigate to the main view
+                        self.navigateToMainView()
+                        
                     }
                 }
             }
         } else {
-            authSession.createNewUser(email: email, password: password) { (result) in
+            authSession.createNewUser(email: email, password: password) { [unowned self] (result) in
                 
                 switch result{
                 case .failure(let error):
@@ -66,15 +67,19 @@ class LoginViewController: UIViewController {
                         self.errorLabel.text = "\(error.localizedDescription)"
                         self.errorLabel.textColor = .systemRed
                     }
-                case .success(let authDataResult):
+                case .success:
                     DispatchQueue.main.async {
-                        self.errorLabel.textColor = .systemGreen
-                        self.errorLabel.text = "Thank you for signing up, \(authDataResult.user.email ?? "")!"
+                        //TODO: navigate to the main view
+                        self.navigateToMainView()
                     }
                 }
             }
         }
         
+    }
+    
+    private func navigateToMainView() {
+        UIViewController.showViewController(storyboardName: "MainView", viewControllerID: "MainTabBarController")
     }
     
     private func clearErrorLabel() {
