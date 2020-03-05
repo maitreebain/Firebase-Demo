@@ -236,13 +236,22 @@
                                     <action selector="editProfilePhotoButtonPressed:" destination="9Tx-ad-TMN" eventType="touchUpInside" id="Q8G-r9-ew2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-BI-e1W">
+                                <rect key="frame" x="177" y="493" width="60" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutButtonPressed:" destination="9Tx-ad-TMN" eventType="touchUpInside" id="6WR-mf-DDR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="WbP-BI-e1W" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="4ex-ZO-xyQ"/>
                             <constraint firstItem="955-L3-xzy" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="5fB-aX-Z6d"/>
                             <constraint firstItem="9R4-me-1O3" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="610-cX-y4B"/>
                             <constraint firstItem="bA2-RV-rqR" firstAttribute="top" secondItem="955-L3-xzy" secondAttribute="bottom" constant="20" id="7So-lR-Vpo"/>
                             <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="955-L3-xzy" secondAttribute="trailing" constant="20" id="8gf-Em-Ogf"/>
+                            <constraint firstItem="WbP-BI-e1W" firstAttribute="top" secondItem="Ibb-e1-5dy" secondAttribute="bottom" constant="30" id="Oyz-9e-jyE"/>
                             <constraint firstItem="OOI-b5-V2O" firstAttribute="centerY" secondItem="9R4-me-1O3" secondAttribute="centerY" id="RHv-Pa-JAQ"/>
                             <constraint firstItem="OOI-b5-V2O" firstAttribute="leading" secondItem="9R4-me-1O3" secondAttribute="trailing" constant="8" id="Vv9-aZ-FtZ"/>
                             <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerY" secondItem="4sb-l1-RMc" secondAttribute="centerY" id="Vx9-Ww-bfO"/>
