@@ -16,6 +16,10 @@
 		57845AEF24092D5D00F35651 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57845AEE24092D5D00F35651 /* LoginView.storyboard */; };
 		57845AF124092DBB00F35651 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57845AF024092DBB00F35651 /* GradientView.swift */; };
 		57845AF324092DDC00F35651 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57845AF224092DDC00F35651 /* DesignableView.swift */; };
+		8015625D240FFDFC000CDAC6 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8015625C240FFDFC000CDAC6 /* ItemCell.xib */; };
+		8015625F240FFE0F000CDAC6 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015625E240FFE0F000CDAC6 /* ItemCell.swift */; };
+		8015626224100AF8000CDAC6 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015626124100AF8000CDAC6 /* UIImage+Extensions.swift */; };
+		8015626424100DCC000CDAC6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015626324100DCC000CDAC6 /* StorageService.swift */; };
 		8059C4C2240D5E0200276016 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8059C4C1240D5E0200276016 /* MainView.storyboard */; };
 		8059C4C4240D5F0900276016 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C3240D5F0900276016 /* MainTabBarController.swift */; };
 		8059C4C6240D5F3200276016 /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */; };
@@ -61,6 +65,10 @@
 		57845AEE24092D5D00F35651 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		57845AF024092DBB00F35651 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		57845AF224092DDC00F35651 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		8015625C240FFDFC000CDAC6 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		8015625E240FFE0F000CDAC6 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		8015626124100AF8000CDAC6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		8015626324100DCC000CDAC6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		8059C4C1240D5E0200276016 /* MainView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		8059C4C3240D5F0900276016 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 		57845ACB24092D4300F35651 /* Firebase-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				8015626024100ADC000CDAC6 /* Extensions */,
 				8059C4D3240D775A00276016 /* Models */,
 				80C30F112409750D00294F35 /* Firebase Services */,
 				57845AF72409337B00F35651 /* Storyboards */,
@@ -169,6 +178,8 @@
 				57845AF024092DBB00F35651 /* GradientView.swift */,
 				57845AF224092DDC00F35651 /* DesignableView.swift */,
 				8059C4D1240D757E00276016 /* CategoryCell.swift */,
+				8015625C240FFDFC000CDAC6 /* ItemCell.xib */,
+				8015625E240FFE0F000CDAC6 /* ItemCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,6 +209,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		8015626024100ADC000CDAC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8015626124100AF8000CDAC6 /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8059C4D3240D775A00276016 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +231,7 @@
 			children = (
 				80C30F122409753B00294F35 /* AuthenticationSession.swift */,
 				8059C4D8240D7E5E00276016 /* DatabaseService.swift */,
+				8015626324100DCC000CDAC6 /* StorageService.swift */,
 			);
 			path = "Firebase Services";
 			sourceTree = "<group>";
@@ -311,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8015625D240FFDFC000CDAC6 /* ItemCell.xib in Resources */,
 				57845AD924092D4400F35651 /* LaunchScreen.storyboard in Resources */,
 				80A06FE924096E64008CF37A /* GoogleService-Info.plist in Resources */,
 				8059C4C2240D5E0200276016 /* MainView.storyboard in Resources */,
@@ -399,8 +420,10 @@
 			files = (
 				8059C4D9240D7E5E00276016 /* DatabaseService.swift in Sources */,
 				8059C4CE240D5F9200276016 /* UIViewController+Navigation.swift in Sources */,
+				8015625F240FFE0F000CDAC6 /* ItemCell.swift in Sources */,
 				57845AD124092D4300F35651 /* LoginViewController.swift in Sources */,
 				8059C4C6240D5F3200276016 /* ItemFeedViewController.swift in Sources */,
+				8015626424100DCC000CDAC6 /* StorageService.swift in Sources */,
 				8059C4D2240D757E00276016 /* CategoryCell.swift in Sources */,
 				8059C4D7240D7B8F00276016 /* Item.swift in Sources */,
 				8059C4CA240D5F5600276016 /* ProfileViewController.swift in Sources */,
@@ -412,6 +435,7 @@
 				57845AF324092DDC00F35651 /* DesignableView.swift in Sources */,
 				8059C4D5240D776F00276016 /* Category.swift in Sources */,
 				8059C4D0240D5FDF00276016 /* UIViewController+Alerts.swift in Sources */,
+				8015626224100AF8000CDAC6 /* UIImage+Extensions.swift in Sources */,
 				80C30F132409753B00294F35 /* AuthenticationSession.swift in Sources */,
 				57845ACF24092D4300F35651 /* SceneDelegate.swift in Sources */,
 			);
