@@ -26,12 +26,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vhb-h4-hhd">
+                                <rect key="frame" x="20" y="236" width="374" height="374"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vhb-h4-hhd" secondAttribute="height" multiplier="1:1" id="CJv-0D-KFv"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LS8-f3-CsV" firstAttribute="top" secondItem="g7S-ri-CvT" secondAttribute="bottom" constant="20" id="4iJ-Td-Wtg"/>
                             <constraint firstItem="g7S-ri-CvT" firstAttribute="top" secondItem="990-xj-ua3" secondAttribute="top" constant="20" id="801-yH-uc1"/>
                             <constraint firstItem="LS8-f3-CsV" firstAttribute="leading" secondItem="990-xj-ua3" secondAttribute="leading" constant="20" id="K2E-yr-wS4"/>
+                            <constraint firstItem="Vhb-h4-hhd" firstAttribute="leading" secondItem="990-xj-ua3" secondAttribute="leading" constant="20" id="Md3-oc-knU"/>
+                            <constraint firstItem="990-xj-ua3" firstAttribute="trailing" secondItem="Vhb-h4-hhd" secondAttribute="trailing" constant="20" id="N1z-oF-5ig"/>
+                            <constraint firstItem="Vhb-h4-hhd" firstAttribute="top" secondItem="LS8-f3-CsV" secondAttribute="bottom" constant="40" id="T0w-mx-fGx"/>
                             <constraint firstItem="990-xj-ua3" firstAttribute="trailing" secondItem="g7S-ri-CvT" secondAttribute="trailing" constant="20" id="gRC-DQ-myR"/>
                             <constraint firstItem="990-xj-ua3" firstAttribute="trailing" secondItem="LS8-f3-CsV" secondAttribute="trailing" constant="20" id="uh2-eD-MOq"/>
                             <constraint firstItem="g7S-ri-CvT" firstAttribute="leading" secondItem="990-xj-ua3" secondAttribute="leading" constant="20" id="uhn-aJ-s9G"/>
@@ -46,6 +55,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="itemImageView" destination="Vhb-h4-hhd" id="1UD-5t-v6D"/>
                         <outlet property="itemNameTextField" destination="g7S-ri-CvT" id="toD-Lt-mSs"/>
                         <outlet property="itemPriceTextField" destination="LS8-f3-CsV" id="lNe-pi-7hL"/>
                     </connections>
@@ -297,6 +307,7 @@
         <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="photo.fill" catalog="system" width="64" height="46"/>
+        <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="tag.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>

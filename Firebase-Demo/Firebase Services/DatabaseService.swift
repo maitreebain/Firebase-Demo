@@ -19,7 +19,7 @@ class DatabaseService {
     private let db = Firestore.firestore()
     //refers to firestore database
     
-    public func createItem(itemName: String, price: Double, category: Category, displayName: String, completion: @escaping (Result<Bool, Error>) -> ()) {
+    public func createItem(itemName: String, price: Double, category: Category, displayName: String, completion: @escaping (Result<String, Error>) -> ()) {
         //"sellerID" - user.uuID
         guard let user = Auth.auth().currentUser else { return }
         
@@ -35,12 +35,12 @@ class DatabaseService {
             "listedDate": Timestamp(date: Date()),
             "sellerName": displayName,
             "sellerID": user.uid,
-            "categoryName": category.name
+            "categoryName": category.name,
         ]) { (error) in
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.success(true))
+                completion(.success(documentRef.documentID))
             }
         }
         
