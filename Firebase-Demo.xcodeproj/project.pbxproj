@@ -32,6 +32,8 @@
 		8059C4D5240D776F00276016 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4D4240D776F00276016 /* Category.swift */; };
 		8059C4D7240D7B8F00276016 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4D6240D7B8F00276016 /* Item.swift */; };
 		8059C4D9240D7E5E00276016 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4D8240D7E5E00276016 /* DatabaseService.swift */; };
+		8081DA6E24196A60000F183B /* ItemDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081DA6D24196A60000F183B /* ItemDetailController.swift */; };
+		8081DA7024197398000F183B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081DA6F24197398000F183B /* HeaderView.swift */; };
 		80A06FE924096E64008CF37A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80A06FE824096E64008CF37A /* GoogleService-Info.plist */; };
 		80C30F132409753B00294F35 /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C30F122409753B00294F35 /* AuthenticationSession.swift */; };
 		B627DCB017E2DC6D50856359 /* Pods_Firebase_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF375A12ABB62463DF40C2A /* Pods_Firebase_DemoTests.framework */; };
@@ -81,6 +83,8 @@
 		8059C4D4240D776F00276016 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		8059C4D6240D7B8F00276016 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8059C4D8240D7E5E00276016 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		8081DA6D24196A60000F183B /* ItemDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailController.swift; sourceTree = "<group>"; };
+		8081DA6F24197398000F183B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		80A06FE824096E64008CF37A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80C30F122409753B00294F35 /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
 		8B666E419FEDB3DC8B0FF542 /* Pods_Firebase_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +181,7 @@
 			children = (
 				57845AF024092DBB00F35651 /* GradientView.swift */,
 				57845AF224092DDC00F35651 /* DesignableView.swift */,
+				8081DA6F24197398000F183B /* HeaderView.swift */,
 				8059C4D1240D757E00276016 /* CategoryCell.swift */,
 				8015625C240FFDFC000CDAC6 /* ItemCell.xib */,
 				8015625E240FFE0F000CDAC6 /* ItemCell.swift */,
@@ -190,6 +195,7 @@
 				57845AD024092D4300F35651 /* LoginViewController.swift */,
 				8059C4C3240D5F0900276016 /* MainTabBarController.swift */,
 				8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */,
+				8081DA6D24196A60000F183B /* ItemDetailController.swift */,
 				8059C4C7240D5F4400276016 /* SellItemViewController.swift */,
 				8059C4CB240D5F6500276016 /* CreateItemViewController.swift */,
 				8059C4C9240D5F5600276016 /* ProfileViewController.swift */,
@@ -425,11 +431,13 @@
 				8059C4C6240D5F3200276016 /* ItemFeedViewController.swift in Sources */,
 				8015626424100DCC000CDAC6 /* StorageService.swift in Sources */,
 				8059C4D2240D757E00276016 /* CategoryCell.swift in Sources */,
+				8081DA7024197398000F183B /* HeaderView.swift in Sources */,
 				8059C4D7240D7B8F00276016 /* Item.swift in Sources */,
 				8059C4CA240D5F5600276016 /* ProfileViewController.swift in Sources */,
 				57845ACD24092D4300F35651 /* AppDelegate.swift in Sources */,
 				57845AF124092DBB00F35651 /* GradientView.swift in Sources */,
 				8059C4CC240D5F6500276016 /* CreateItemViewController.swift in Sources */,
+				8081DA6E24196A60000F183B /* ItemDetailController.swift in Sources */,
 				8059C4C8240D5F4400276016 /* SellItemViewController.swift in Sources */,
 				8059C4C4240D5F0900276016 /* MainTabBarController.swift in Sources */,
 				57845AF324092DDC00F35651 /* DesignableView.swift in Sources */,

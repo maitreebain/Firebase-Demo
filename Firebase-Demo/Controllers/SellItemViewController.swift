@@ -21,8 +21,6 @@ class SellItemViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-
-
 }
 
 extension SellItemViewController: UICollectionViewDataSource {
