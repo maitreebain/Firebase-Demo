@@ -263,12 +263,12 @@
                             <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="955-L3-xzy" secondAttribute="trailing" constant="20" id="8gf-Em-Ogf"/>
                             <constraint firstItem="WbP-BI-e1W" firstAttribute="top" secondItem="Ibb-e1-5dy" secondAttribute="bottom" constant="30" id="Oyz-9e-jyE"/>
                             <constraint firstItem="OOI-b5-V2O" firstAttribute="centerY" secondItem="9R4-me-1O3" secondAttribute="centerY" id="RHv-Pa-JAQ"/>
-                            <constraint firstItem="OOI-b5-V2O" firstAttribute="leading" secondItem="9R4-me-1O3" secondAttribute="trailing" constant="8" id="Vv9-aZ-FtZ"/>
                             <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerY" secondItem="4sb-l1-RMc" secondAttribute="centerY" id="Vx9-Ww-bfO"/>
                             <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="bA2-RV-rqR" secondAttribute="trailing" constant="20" id="jGg-MO-9sU"/>
                             <constraint firstItem="9R4-me-1O3" firstAttribute="top" secondItem="qgZ-bt-8pr" secondAttribute="top" constant="40" id="jfp-sy-LSa"/>
                             <constraint firstItem="bA2-RV-rqR" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="mHg-b9-vyN"/>
                             <constraint firstItem="955-L3-xzy" firstAttribute="top" secondItem="9R4-me-1O3" secondAttribute="bottom" constant="20" id="one-m5-gzN"/>
+                            <constraint firstItem="OOI-b5-V2O" firstAttribute="leading" secondItem="9R4-me-1O3" secondAttribute="trailing" constant="8" id="v3u-af-8VU"/>
                             <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="yvp-EH-K7S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qgZ-bt-8pr"/>

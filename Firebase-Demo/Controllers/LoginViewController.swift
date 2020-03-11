@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum AccountState {
     case existingUser
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
     private var accountState: AccountState = .existingUser
     
     private var authSession = AuthenticationSession()
+    private var databaseService = DatabaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,6 @@ class LoginViewController: UIViewController {
                     }
                 case .success:
                     DispatchQueue.main.async {
-                        //TODO: navigate to the main view
                         self.navigateToMainView()
                         
                     }
@@ -67,15 +68,30 @@ class LoginViewController: UIViewController {
                         self.errorLabel.text = "\(error.localizedDescription)"
                         self.errorLabel.textColor = .systemRed
                     }
-                case .success:
-                    DispatchQueue.main.async {
-                        //TODO: navigate to the main view
-                        self.navigateToMainView()
-                    }
+                case .success(let authDataResult):
+                    //ONLY create database for user here
+                    //create a databse user only from a new authenticated account
+                    self.createDatabaseUser(authDataResult: authDataResult)
                 }
             }
         }
         
+    }
+    
+    private func createDatabaseUser(authDataResult: AuthDataResult) {
+        databaseService.createDatabaseUser(authDataResult: authDataResult) { [weak self] (result) in
+            
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Account Error", message: "\(error.localizedDescription)")
+                }
+            case .success:
+                DispatchQueue.main.async {
+                    self?.navigateToMainView()
+                }
+            }
+        }
     }
     
     private func navigateToMainView() {

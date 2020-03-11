@@ -25,6 +25,10 @@ extension UIViewController {
         let newVC = storyboard.instantiateViewController(withIdentifier: viewControllerID)
         resetWindow(newVC)
     }
+    
+    public static func showViewController(viewController: UIViewController) {
+        resetWindow(viewController)
+    }
 
     
 }

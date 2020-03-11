@@ -8,12 +8,14 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class ItemFeedViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     private var listener: ListenerRegistration?
+    private var databaseService = DatabaseService()
     
     private var items = [Item]() {
         didSet {
@@ -72,6 +74,39 @@ extension ItemFeedViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //perform deletion on item
+            let item = items[indexPath.row]
+            databaseService.deletePosting(item: item) { [weak self] (result) in
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Deletion error", message: "\(error.localizedDescription)")
+                    }
+                case .success:
+                    print("deleted successfully")
+                }
+                
+            }
+        }
+    }
+    
+    //user who created is the only one able to delete the item
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let item = items[indexPath.row]
+        guard let user = Auth.auth().currentUser else { return false }
+        
+        if item.sellerID != user.uid {
+            return false
+        } else {
+            return true
+        }
+        
+    }
+    
+    //that's not enough to only prevent accidental deletion on the client, we need to protect the database as well, we will do so using "Security Rules"
 }
 
 extension ItemFeedViewController: UITableViewDelegate {

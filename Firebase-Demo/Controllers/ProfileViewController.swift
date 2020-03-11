@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
     }
     
     private let storageService = StorageService()
+    private var databaseService = DatabaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,18 @@ class ProfileViewController: UIViewController {
         
     }
     
+    private func updateDatabaseUser(displayName: String, photoURL: String) {
+        databaseService.updateDatabaseUser(displayName: displayName, photoURL: photoURL) { (result) in
+            
+            switch result {
+            case .failure(let error):
+                print("bleep: \(error)")
+            case .success:
+                print("blop")
+            }
+        }
+    }
+    
     @IBAction func updateProfileButtonPressed(_ sender: UIButton) {
         
         guard let displayName = displayNameTextField.text, !displayName.isEmpty, let selectedImage = selectedImage else {
@@ -68,13 +81,15 @@ class ProfileViewController: UIViewController {
         guard let user = Auth.auth().currentUser else {
             return
         }
-        storageService.uploadPhoto(userID: user.uid, image: selectedImage) { [weak self] (result) in
+        storageService.uploadPhoto(userID: user.uid, image: resizedImage) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.showAlert(title: "Error uploading photo", message: "\(error.localizedDescription)")
                 }
             case .success(let url):
+                self?.updateDatabaseUser(displayName: displayName, photoURL: url.absoluteString)
+                //TODO: refactor into its own function
                 let request = Auth.auth().currentUser?.createProfileChangeRequest()
                 request?.displayName = displayName
                 request?.photoURL = url
