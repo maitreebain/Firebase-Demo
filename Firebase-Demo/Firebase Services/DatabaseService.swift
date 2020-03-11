@@ -89,6 +89,33 @@ class DatabaseService {
         }
     }
     
+    public func postComment(item: Item, comment: String, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser, let displayName = user.displayName else {
+            print("no display name")
+            return
+        }
+        
+        //creating document here
+        let docRef = db.collection(DatabaseService.itemsCollection).document(item.itemID).collection(DatabaseService.commentsCollection).document()
+        
+        //using document from above to write to firebase
+        db.collection(DatabaseService.itemsCollection).document(item.itemID).collection(DatabaseService.commentsCollection).document(docRef.documentID).setData([
+            "text" : comment,
+            "createdDate": Timestamp(date: Date()),
+            "itemName": item.itemName,
+            "itemID": item.itemID,
+            "sellerName": item.sellerName,
+            "commentedBy": displayName
+        ]) { (error) in
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+        }
+    }
+    
     public func deletePosting(item: Item, completion: @escaping (Result<Bool, Error>) -> ()) {
         db.collection(DatabaseService.itemsCollection).document(item.itemID).delete { (error) in
             
