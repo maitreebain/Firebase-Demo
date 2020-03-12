@@ -168,10 +168,20 @@ class DatabaseService {
                 } else {
                     completion(.success(false))
                 }
-            } else {
-                
             }
             
+        }
+    }
+    
+    public func fetchUserItems(userID: String, completion: @escaping (Result<[Item], Error>) -> ()) {
+        db.collection(DatabaseService.itemsCollection).whereField(Constants.selledID, isEqualTo: userID).getDocuments { (snapshot, error) in
+            
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                let items = snapshot.documents.map { Item($0.data()) }
+                completion(.success(items))
+            }
         }
         
     }

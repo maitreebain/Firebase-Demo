@@ -91,8 +91,6 @@ class ItemDetailController: UIViewController {
                 let comments = snapshot.documents.map { Comment($0.data())}
                 self?.comments = comments.sorted( by: { $0.createdDate.dateValue() < $1.createdDate.dateValue() })
                 //maybe fix the sorted?
-            } else {
-                
             }
             
         })

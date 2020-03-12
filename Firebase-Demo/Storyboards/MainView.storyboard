@@ -318,7 +318,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-e1-5dy">
-                                <rect key="frame" x="158" y="433" width="98" height="30"/>
+                                <rect key="frame" x="20" y="129" width="98" height="30"/>
                                 <state key="normal" title="Update Profile"/>
                                 <connections>
                                     <action selector="updateProfileButtonPressed:" destination="9Tx-ad-TMN" eventType="touchUpInside" id="coY-IL-lZU"/>
@@ -342,29 +342,53 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-BI-e1W">
-                                <rect key="frame" x="177" y="493" width="60" height="30"/>
+                                <rect key="frame" x="334" y="129" width="60" height="30"/>
                                 <state key="normal" title="Sign Out"/>
                                 <connections>
                                     <action selector="signOutButtonPressed:" destination="9Tx-ad-TMN" eventType="touchUpInside" id="6WR-mf-DDR"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BKo-cg-NdI">
+                                <rect key="frame" x="20" y="317" width="374" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="k6E-Rp-jVI"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="My Items"/>
+                                    <segment title="Favorties"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlPressed:" destination="9Tx-ad-TMN" eventType="valueChanged" id="WI6-3H-mYE"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-qD-Phj">
+                                <rect key="frame" x="20" y="369" width="374" height="444"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="WbP-BI-e1W" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="4ex-ZO-xyQ"/>
                             <constraint firstItem="955-L3-xzy" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="5fB-aX-Z6d"/>
                             <constraint firstItem="9R4-me-1O3" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="610-cX-y4B"/>
                             <constraint firstItem="bA2-RV-rqR" firstAttribute="top" secondItem="955-L3-xzy" secondAttribute="bottom" constant="20" id="7So-lR-Vpo"/>
+                            <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="BKo-cg-NdI" secondAttribute="trailing" constant="20" id="893-tb-myn"/>
+                            <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="RrS-qD-Phj" secondAttribute="trailing" constant="20" id="8Dc-np-WGB"/>
                             <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="955-L3-xzy" secondAttribute="trailing" constant="20" id="8gf-Em-Ogf"/>
-                            <constraint firstItem="WbP-BI-e1W" firstAttribute="top" secondItem="Ibb-e1-5dy" secondAttribute="bottom" constant="30" id="Oyz-9e-jyE"/>
+                            <constraint firstItem="RrS-qD-Phj" firstAttribute="top" secondItem="BKo-cg-NdI" secondAttribute="bottom" constant="8" symbolic="YES" id="CPb-fK-tfp"/>
+                            <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerY" secondItem="9R4-me-1O3" secondAttribute="centerY" id="HTl-a8-8AL"/>
+                            <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="WbP-BI-e1W" secondAttribute="trailing" constant="20" id="I5Z-6z-YO3"/>
+                            <constraint firstItem="RrS-qD-Phj" firstAttribute="bottom" secondItem="qgZ-bt-8pr" secondAttribute="bottom" id="Lhx-Oy-Yeo"/>
                             <constraint firstItem="OOI-b5-V2O" firstAttribute="centerY" secondItem="9R4-me-1O3" secondAttribute="centerY" id="RHv-Pa-JAQ"/>
-                            <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerY" secondItem="4sb-l1-RMc" secondAttribute="centerY" id="Vx9-Ww-bfO"/>
+                            <constraint firstItem="BKo-cg-NdI" firstAttribute="top" secondItem="bA2-RV-rqR" secondAttribute="bottom" constant="8" id="Sdi-lg-gi0"/>
+                            <constraint firstItem="RrS-qD-Phj" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="ab8-sY-COR"/>
+                            <constraint firstItem="Ibb-e1-5dy" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="ig3-4G-eP7"/>
+                            <constraint firstItem="WbP-BI-e1W" firstAttribute="centerY" secondItem="9R4-me-1O3" secondAttribute="centerY" id="j82-Fr-rNz"/>
                             <constraint firstItem="qgZ-bt-8pr" firstAttribute="trailing" secondItem="bA2-RV-rqR" secondAttribute="trailing" constant="20" id="jGg-MO-9sU"/>
                             <constraint firstItem="9R4-me-1O3" firstAttribute="top" secondItem="qgZ-bt-8pr" secondAttribute="top" constant="40" id="jfp-sy-LSa"/>
                             <constraint firstItem="bA2-RV-rqR" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="mHg-b9-vyN"/>
                             <constraint firstItem="955-L3-xzy" firstAttribute="top" secondItem="9R4-me-1O3" secondAttribute="bottom" constant="20" id="one-m5-gzN"/>
                             <constraint firstItem="OOI-b5-V2O" firstAttribute="leading" secondItem="9R4-me-1O3" secondAttribute="trailing" constant="8" id="v3u-af-8VU"/>
-                            <constraint firstItem="Ibb-e1-5dy" firstAttribute="centerX" secondItem="4sb-l1-RMc" secondAttribute="centerX" id="yvp-EH-K7S"/>
+                            <constraint firstItem="BKo-cg-NdI" firstAttribute="leading" secondItem="qgZ-bt-8pr" secondAttribute="leading" constant="20" id="zn3-a1-E67"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qgZ-bt-8pr"/>
                     </view>
@@ -373,6 +397,7 @@
                         <outlet property="displayNameTextField" destination="955-L3-xzy" id="JOM-cw-klt"/>
                         <outlet property="emailLabel" destination="bA2-RV-rqR" id="Zot-33-TAR"/>
                         <outlet property="profileImageView" destination="9R4-me-1O3" id="H1q-dQ-q6W"/>
+                        <outlet property="tableView" destination="RrS-qD-Phj" id="7eQ-48-9oS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bB1-b7-rEK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
