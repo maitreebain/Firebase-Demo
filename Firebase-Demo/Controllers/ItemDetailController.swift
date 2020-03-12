@@ -10,11 +10,11 @@ import UIKit
 import FirebaseFirestore
 
 class ItemDetailController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerBottomConst: NSLayoutConstraint!
     @IBOutlet weak var commentTextField: UITextField!
-
+    
     private var item: Item
     private var databaseServices = DatabaseService()
     private var listener: ListenerRegistration?
@@ -28,10 +28,20 @@ class ItemDetailController: UIViewController {
     }
     
     private lazy var dateFormatter: DateFormatter = {
-       let formatter = DateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d, h:mm a"
         return formatter
     }()
+    
+    private var isFavorite = false {
+        didSet {
+            if isFavorite{
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+            } else {
+                navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+            }
+        }
+    }
     
     private var originalConstraintValue: CGFloat = 0
     
@@ -45,7 +55,7 @@ class ItemDetailController: UIViewController {
     }
     
     private lazy var tapGesture: UITapGestureRecognizer = {
-       let gesture = UITapGestureRecognizer()
+        let gesture = UITapGestureRecognizer()
         gesture.addTarget(self, action: #selector(dismissKeyboard))
         return gesture
     }()
@@ -61,11 +71,13 @@ class ItemDetailController: UIViewController {
         originalConstraintValue = containerBottomConst.constant
         registerKeyboardNotifications()
         view.addGestureRecognizer(tapGesture)
-        
+        updateUI()
+        //TODO: Refactor code in viewDidLoad, we should always strive for less code in our viewDidLoad
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        updateUI()
         registerKeyboardNotifications()
         
         listener = Firestore.firestore().collection(DatabaseService.itemsCollection).document(item.itemID).collection(DatabaseService.commentsCollection).addSnapshotListener({ [weak self] (snapshot, error) in
@@ -75,9 +87,9 @@ class ItemDetailController: UIViewController {
                     self?.showAlert(title: "Try Again", message: "\(error.localizedDescription)")
                 }
             } else if let snapshot = snapshot {
-            //create comments using dictionary initializer from the comment model
+                //create comments using dictionary initializer from the comment model
                 let comments = snapshot.documents.map { Comment($0.data())}
-                self?.comments = comments.sorted( by: { $0.commentDate.dateValue() < $1.commentDate.dateValue() })
+                self?.comments = comments.sorted( by: { $0.createdDate.dateValue() < $1.createdDate.dateValue() })
                 //maybe fix the sorted?
             } else {
                 
@@ -90,9 +102,28 @@ class ItemDetailController: UIViewController {
         unregisterKeyboardNotifications()
         listener?.remove()
     }
-
+    
+    private func updateUI() {
+        //check if item is favorite and update heart icon accordingly
+        databaseServices.isItemInFavorites(item: item) { [weak self] (result) in
+            
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Try Again", message: "\(error.localizedDescription)")
+                }
+            case .success(let success):
+                if success {
+                    self?.isFavorite = true
+                } else {
+                    self?.isFavorite = false
+                }
+            }
+        }
+    }
+    
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-    dismissKeyboard()
+        dismissKeyboard()
         //TODO: add comment on Firebase item document
         //getting ready to post to fire base
         guard let commentText = commentTextField.text, !commentText.isEmpty else {
@@ -122,7 +153,7 @@ class ItemDetailController: UIViewController {
     
     private func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func unregisterKeyboardNotifications() {
@@ -150,15 +181,34 @@ class ItemDetailController: UIViewController {
     
     
     @IBAction func favoriteButtonPressed(_ sender: UIBarButtonItem) {
-        databaseServices.addToFavorites(item: item) { [weak self] (result) in
-            
-            switch result {
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.showAlert(title: "Favoriting failed", message: "\(error.localizedDescription)")
+        
+        if isFavorite{ //remove from favorites
+            databaseServices.removeFromFavorites(item: item) { [weak self] (result) in
+                
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Removing failed", message: "\(error.localizedDescription)")
+                    }
+                case .success:
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Successfully removed", message: nil)
+                        self?.isFavorite = false
+                    }
                 }
-            case .success:
-                self?.showAlert(title: "Item added", message: nil)
+            }
+        } else {
+            databaseServices.addToFavorites(item: item) { [weak self] (result) in
+                
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Favoriting failed", message: "\(error.localizedDescription)")
+                    }
+                case .success:
+                    self?.showAlert(title: "Item favorites", message: nil)
+                    self?.isFavorite = true
+                }
             }
         }
     }
@@ -174,7 +224,7 @@ extension ItemDetailController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
         
         let comment = comments[indexPath.row]
-        let dateString = dateFormatter.string(from: comment.commentDate.dateValue())
+        let dateString = dateFormatter.string(from: comment.createdDate.dateValue())
         cell.textLabel?.text = comment.text
         cell.detailTextLabel?.text = "@\(comment.commentedBy) - \(dateString)"
         
