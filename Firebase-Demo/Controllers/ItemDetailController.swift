@@ -77,7 +77,8 @@ class ItemDetailController: UIViewController {
             } else if let snapshot = snapshot {
             //create comments using dictionary initializer from the comment model
                 let comments = snapshot.documents.map { Comment($0.data())}
-                self?.comments = comments
+                self?.comments = comments.sorted( by: { $0.commentDate.dateValue() < $1.commentDate.dateValue() })
+                //maybe fix the sorted?
             } else {
                 
             }
@@ -87,6 +88,7 @@ class ItemDetailController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         unregisterKeyboardNotifications()
+        listener?.remove()
     }
 
     @IBAction func sendButtonPressed(_ sender: UIButton) {
@@ -120,7 +122,7 @@ class ItemDetailController: UIViewController {
     
     private func registerKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func unregisterKeyboardNotifications() {
@@ -139,12 +141,26 @@ class ItemDetailController: UIViewController {
     
     @objc private func keyboardWillHide(_ notification: Notification){
         dismissKeyboard()
-        listener?.remove()
     }
     
     @objc private func dismissKeyboard() {
         containerBottomConst.constant = originalConstraintValue
         commentTextField.resignFirstResponder()
+    }
+    
+    
+    @IBAction func favoriteButtonPressed(_ sender: UIBarButtonItem) {
+        databaseServices.addToFavorites(item: item) { [weak self] (result) in
+            
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Favoriting failed", message: "\(error.localizedDescription)")
+                }
+            case .success:
+                self?.showAlert(title: "Item added", message: nil)
+            }
+        }
     }
     
 }

@@ -245,7 +245,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jb1-Fw-QtE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7Bd-wz-aLa"/>
+                    <navigationItem key="navigationItem" id="7Bd-wz-aLa">
+                        <barButtonItem key="rightBarButtonItem" image="heart" catalog="system" id="jsI-nd-9wk">
+                            <color key="tintColor" red="0.89308375630000003" green="0.38342688920000001" blue="0.36983842729999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="favoriteButtonPressed:" destination="AeZ-wd-HLo" id="kiI-cE-jsz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentTextField" destination="bFp-lG-Jbp" id="L7R-ck-PQ2"/>
                         <outlet property="containerBottomConst" destination="SdP-av-LCu" id="nOr-XH-cXl"/>
@@ -429,6 +436,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="64" height="54"/>
         <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="photo.fill" catalog="system" width="64" height="46"/>

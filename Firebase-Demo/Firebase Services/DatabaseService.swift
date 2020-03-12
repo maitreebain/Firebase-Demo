@@ -15,6 +15,7 @@ class DatabaseService {
     static let itemsCollection = "items" // collections
     static let usersCollection = "users"
     static let commentsCollection = "comments" // sub-collection on an item document
+    static let favoritesCollection = "favorites" // sub-collection on a user document
     
     //review - firebase firestore hierachy
     // top lvl
@@ -114,6 +115,65 @@ class DatabaseService {
                 completion(.success(true))
             }
         }
+    }
+    
+    public func addToFavorites(item: Item, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        db.collection(DatabaseService.usersCollection).document(user.uid).collection(DatabaseService.favoritesCollection).document(item.itemID).setData([
+            "itemName" : item.itemName,
+            "price": item.price,
+            "imageURL": item.imageURL,
+            "favoritedDate": Timestamp(date: Date()),
+            "itemID": item.itemID,
+            "sellerName": item.sellerName,
+            "sellerID": item.sellerID
+        ]) { (error) in
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+            
+        }
+    }
+    
+    public func removeFromFavorites(item: Item, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        db.collection(DatabaseService.usersCollection).document(user.uid).collection(DatabaseService.favoritesCollection).document(item.itemID).delete { (error) in
+            
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+        }
+    }
+    
+    public func isItemInFavorites(item: Item, completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        //in firebase we use the "where" to query(search) a collection
+        
+        //addSnapshotListener - continues to listen for modifications to a collection
+        //getDocuments - fetches documents ONLY once
+        db.collection(DatabaseService.usersCollection).document(user.uid).collection(DatabaseService.favoritesCollection).whereField("itemID", isEqualTo: item.itemID).getDocuments { (snapshot, error) in
+            
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot {
+                let count = snapshot.documents.count
+                if count > 0 { // check if we have documents
+                    completion(.success(true))
+                } else {
+                    completion(.success(false))
+                }
+            } else {
+                
+            }
+            
+        }
+        
     }
     
     public func deletePosting(item: Item, completion: @escaping (Result<Bool, Error>) -> ()) {
