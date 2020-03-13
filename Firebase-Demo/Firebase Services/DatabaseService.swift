@@ -195,7 +195,8 @@ class DatabaseService {
                 completion(.failure(error))
             } else if let snapshot = snapshot {
                 let favorites = snapshot.documents.compactMap { Favorite($0.data())}
-                completion(.success(favorites))
+                completion(.success(favorites.sorted(by: { $0.favoritedDate.dateValue() > $1.favoritedDate.dateValue()
+                })))
             }
             //compactMap removes nil values
         }

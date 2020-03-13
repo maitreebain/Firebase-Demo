@@ -43,7 +43,7 @@ class ItemFeedViewController: UIViewController {
                 }
             } else if let snapshot = snapshot {
                 let items = snapshot.documents.map { Item($0.data()) }
-                self?.items = items
+                self?.items = items.sorted(by: { $0.listedDate.dateValue() > $1.listedDate.dateValue() })
             }
         })
         

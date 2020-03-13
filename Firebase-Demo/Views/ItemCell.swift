@@ -45,7 +45,7 @@ class ItemCell: UITableViewCell {
     
     public func configureCell(for item: Item){
         currentItem = item
-        updateUI(imageURL: item.imageURL, itemName: item.itemName, sellerName: item.sellerName, date: item.listedDate, price: item.price)
+        updateUI(imageURL: item.imageURL, itemName: item.itemName, sellerName: item.sellerName, date: item.listedDate.dateValue(), price: item.price)
     }
     
     public func configureFav(for fav: Favorite){
@@ -55,7 +55,7 @@ class ItemCell: UITableViewCell {
     private func updateUI(imageURL: String, itemName: String, sellerName: String, date: Date, price: Double) {
         itemNameLabel.text = itemName
         sellerNameLabel.text = "@\(sellerName)"
-        dateLabel.text = date.description
+        dateLabel.text = date.dateString()
         let price = String(format: "%.2f" ,price)
         priceLabel.text = "$\(price)"
         

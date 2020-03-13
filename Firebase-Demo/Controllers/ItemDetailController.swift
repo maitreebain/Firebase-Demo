@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import Firebase
 
 class ItemDetailController: UIViewController {
     
@@ -27,11 +28,6 @@ class ItemDetailController: UIViewController {
         }
     }
     
-    private lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d, h:mm a"
-        return formatter
-    }()
     
     private var isFavorite = false {
         didSet {
@@ -222,7 +218,7 @@ extension ItemDetailController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
         
         let comment = comments[indexPath.row]
-        let dateString = dateFormatter.string(from: comment.createdDate.dateValue())
+        let dateString = comment.createdDate.dateValue().dateString()
         cell.textLabel?.text = comment.text
         cell.detailTextLabel?.text = "@\(comment.commentedBy) - \(dateString)"
         

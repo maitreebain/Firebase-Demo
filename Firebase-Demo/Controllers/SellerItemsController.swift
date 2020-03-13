@@ -38,7 +38,7 @@ class SellerItemsController: UIViewController {
         configureTableView()
         fetchItems()
         fetchUserImg()
-        navigationItem.title = item.sellerName
+        navigationItem.title = "@\(item.sellerName)"
     }
     
     private func fetchItems() {
