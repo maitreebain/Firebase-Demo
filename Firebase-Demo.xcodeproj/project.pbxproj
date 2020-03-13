@@ -22,6 +22,7 @@
 		8015626424100DCC000CDAC6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015626324100DCC000CDAC6 /* StorageService.swift */; };
 		803CE3B4241A9623003F6FAA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803CE3B3241A9623003F6FAA /* Constants.swift */; };
 		805041A2241BD16F002FB3B8 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805041A1241BD16F002FB3B8 /* Favorite.swift */; };
+		805041A4241BE5D9002FB3B8 /* SellerItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805041A3241BE5D9002FB3B8 /* SellerItemsController.swift */; };
 		8059C4C2240D5E0200276016 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8059C4C1240D5E0200276016 /* MainView.storyboard */; };
 		8059C4C4240D5F0900276016 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C3240D5F0900276016 /* MainTabBarController.swift */; };
 		8059C4C6240D5F3200276016 /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */; };
@@ -76,6 +77,7 @@
 		8015626324100DCC000CDAC6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		803CE3B3241A9623003F6FAA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		805041A1241BD16F002FB3B8 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		805041A3241BE5D9002FB3B8 /* SellerItemsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerItemsController.swift; sourceTree = "<group>"; };
 		8059C4C1240D5E0200276016 /* MainView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		8059C4C3240D5F0900276016 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */,
 				8081DA6D24196A60000F183B /* ItemDetailController.swift */,
 				8059C4C7240D5F4400276016 /* SellItemViewController.swift */,
+				805041A3241BE5D9002FB3B8 /* SellerItemsController.swift */,
 				8059C4CB240D5F6500276016 /* CreateItemViewController.swift */,
 				8059C4C9240D5F5600276016 /* ProfileViewController.swift */,
 				8059C4CD240D5F9200276016 /* UIViewController+Navigation.swift */,
@@ -442,6 +445,7 @@
 				8015626424100DCC000CDAC6 /* StorageService.swift in Sources */,
 				8059C4D2240D757E00276016 /* CategoryCell.swift in Sources */,
 				8081DA7024197398000F183B /* HeaderView.swift in Sources */,
+				805041A4241BE5D9002FB3B8 /* SellerItemsController.swift in Sources */,
 				8059C4D7240D7B8F00276016 /* Item.swift in Sources */,
 				8059C4CA240D5F5600276016 /* ProfileViewController.swift in Sources */,
 				57845ACD24092D4300F35651 /* AppDelegate.swift in Sources */,

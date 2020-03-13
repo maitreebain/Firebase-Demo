@@ -71,6 +71,7 @@ extension ItemFeedViewController: UITableViewDataSource {
         
         let item = items[indexPath.row]
         cell.configureCell(for: item)
+        cell.delegate = self
         
         return cell
     }
@@ -126,5 +127,16 @@ extension ItemFeedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
+    }
+}
+
+extension ItemFeedViewController: ItemCellDelegate {
+    func didSelectSellerName(_ itemCell: ItemCell, item: Item) {
+        let storyboard = UIStoryboard(name: "MainView", bundle: nil)
+        let sellerItemsVC = storyboard.instantiateViewController(identifier: "SellerItemsController") { (coder) in
+            return SellerItemsController(coder: coder, item: item)
+        }
+        
+        navigationController?.pushViewController(sellerItemsVC, animated: true)
     }
 }

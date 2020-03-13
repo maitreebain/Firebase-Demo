@@ -9,13 +9,21 @@
 import UIKit
 import Kingfisher
 
-class ItemCell: UITableViewCell {
+protocol ItemCellDelegate: AnyObject {
+    func didSelectSellerName(_ itemCell: ItemCell, item: Item)
+}
 
+class ItemCell: UITableViewCell {
+    
+    weak var delegate: ItemCellDelegate?
+    
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var sellerNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    
+    private var currentItem: Item!
     
     private lazy var tapGesture: UIGestureRecognizer = {
         let gesture = UITapGestureRecognizer()
@@ -32,10 +40,11 @@ class ItemCell: UITableViewCell {
     }
     
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
-        print("hungeeeyy")
+        delegate?.didSelectSellerName(self, item: currentItem)
     }
     
     public func configureCell(for item: Item){
+        currentItem = item
         updateUI(imageURL: item.imageURL, itemName: item.itemName, sellerName: item.sellerName, date: item.listedDate, price: item.price)
     }
     
