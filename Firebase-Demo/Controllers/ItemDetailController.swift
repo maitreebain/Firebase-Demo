@@ -204,7 +204,7 @@ class ItemDetailController: UIViewController {
                         self?.showAlert(title: "Favoriting failed", message: "\(error.localizedDescription)")
                     }
                 case .success:
-                    self?.showAlert(title: "Item favorites", message: nil)
+                    self?.showAlert(title: "Item favorited", message: nil)
                     self?.isFavorite = true
                 }
             }

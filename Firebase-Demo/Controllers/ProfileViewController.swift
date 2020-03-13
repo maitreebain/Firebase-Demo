@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    private var favorites = [String]() {
+    private var favorites = [Favorite]() {
         didSet{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -70,12 +70,12 @@ class ProfileViewController: UIViewController {
         displayNameTextField.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "itemCell")
         updateUI()
-        fetchItems()
+        tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "itemCell")
+        loadData()
         refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(fetchItems), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
     }
     
     private func updateUI() {
@@ -94,6 +94,11 @@ class ProfileViewController: UIViewController {
         
     }
     
+    @objc private func loadData() {
+        fetchItems()
+        fetchFavorites()
+    }
+    
     @objc private func fetchItems() {
         guard let user = Auth.auth().currentUser else {
             refreshControl.endRefreshing()
@@ -105,7 +110,7 @@ class ProfileViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(title: "Fetching error", message: "\(error.localizedDescription)")
             case .success(let items):
-             self?.myItems = items
+                self?.myItems = items
             }
             DispatchQueue.main.async {
                 self?.refreshControl.endRefreshing()
@@ -114,7 +119,18 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func fetchFavorites() {
-        
+        databaseService.fetchFavorites { [weak self] (result) in
+            
+            switch result {
+            case .failure(let error):
+                self?.showAlert(title: "Fetching favorites error", message: "\(error.localizedDescription)")
+            case .success(let favorites):
+                self?.favorites = favorites
+            }
+            DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
+            }
+        }
     }
     
     private func updateDatabaseUser(displayName: String, photoURL: String) {
@@ -242,6 +258,7 @@ extension ProfileViewController: UITableViewDataSource {
             cell.configureCell(for: item)
         } else {
             let favorite = favorites[indexPath.row]
+            cell.configureFav(for: favorite)
         }
         
         return cell

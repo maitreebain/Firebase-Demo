@@ -21,6 +21,7 @@
 		8015626224100AF8000CDAC6 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015626124100AF8000CDAC6 /* UIImage+Extensions.swift */; };
 		8015626424100DCC000CDAC6 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015626324100DCC000CDAC6 /* StorageService.swift */; };
 		803CE3B4241A9623003F6FAA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803CE3B3241A9623003F6FAA /* Constants.swift */; };
+		805041A2241BD16F002FB3B8 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805041A1241BD16F002FB3B8 /* Favorite.swift */; };
 		8059C4C2240D5E0200276016 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8059C4C1240D5E0200276016 /* MainView.storyboard */; };
 		8059C4C4240D5F0900276016 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C3240D5F0900276016 /* MainTabBarController.swift */; };
 		8059C4C6240D5F3200276016 /* ItemFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */; };
@@ -74,6 +75,7 @@
 		8015626124100AF8000CDAC6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		8015626324100DCC000CDAC6 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		803CE3B3241A9623003F6FAA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		805041A1241BD16F002FB3B8 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		8059C4C1240D5E0200276016 /* MainView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		8059C4C3240D5F0900276016 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8059C4C5240D5F3200276016 /* ItemFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFeedViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				8059C4D4240D776F00276016 /* Category.swift */,
 				8059C4D6240D7B8F00276016 /* Item.swift */,
 				8081DA7124198F68000F183B /* Comment.swift */,
+				805041A1241BD16F002FB3B8 /* Favorite.swift */,
 				803CE3B3241A9623003F6FAA /* Constants.swift */,
 			);
 			path = Models;
@@ -450,6 +453,7 @@
 				57845AF324092DDC00F35651 /* DesignableView.swift in Sources */,
 				8059C4D5240D776F00276016 /* Category.swift in Sources */,
 				8059C4D0240D5FDF00276016 /* UIViewController+Alerts.swift in Sources */,
+				805041A2241BD16F002FB3B8 /* Favorite.swift in Sources */,
 				8015626224100AF8000CDAC6 /* UIImage+Extensions.swift in Sources */,
 				80C30F132409753B00294F35 /* AuthenticationSession.swift in Sources */,
 				57845ACF24092D4300F35651 /* SceneDelegate.swift in Sources */,
